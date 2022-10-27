@@ -11,6 +11,54 @@ import numpy as np
 
 # Reading in Files
 
+"""
+fName = ['Basic2D_Reference.ucd', 'Basic3D_Reference.ucd', 'Basic2D_Deformed.ucd', 'Basic3D_Deformed.ucd',
+         'Adv2D_Reference.ucd', 'Adv3D_Reference.ucd', 'Adv2D_Deformed.ucd', 'Adv3D_Deformed.ucd']
+
+
+def reading(Name):
+    for i, name in enumerate(range(len(Name))):
+        BA = Name[i].find('Basic')
+        Deform = Name[i].find('Deformed')
+        if BA == 1:
+            Dim = Name[i].find('2D')
+            if Dim == 1:
+                BNodesR_2D = np.genfromtxt(Name, skip_footer=7, skip_header=1, delimiter=' ')
+                BElemsR_2D = np.genfromtxt(Name, skip_header=9, delimiter=' ')
+            else:
+                BNodesR_3D = np.genfromtxt(Name, skip_footer=7, skip_header=1, delimiter=' ')
+                BElemsR_3D = np.genfromtxt(Name, skip_header=9, delimiter=' ')
+        else:
+            Dim = Name[i].find('2D')
+            if Dim == 1:
+                ANodesR_2D = np.genfromtxt(Name, skip_footer=734, skip_header=1, delimiter=' ')
+                AElemsR_2D = np.genfromtxt(Name, skip_header=405, delimiter=' ')
+            else:
+                ANodesR_3D = np.genfromtxt(Name, skip_footer=734, skip_header=1, delimiter=' ')
+                AElemsR_3D = np.genfromtxt(Name, skip_header=405, delimiter=' ')
+        if Deform == 1:
+            Dim = Name[i].find('2D')
+            if Dim == 1:
+                BNodesD_2D = np.genfromtxt(Name, skip_footer=7, skip_header=1, delimiter=' ')
+                BElemsD_2D = np.genfromtxt(Name, skip_header=9, delimiter=' ')
+            else:
+                BNodesD_3D = np.genfromtxt(Name, skip_footer=7, skip_header=1, delimiter=' ')
+                BElemsD_3D = np.genfromtxt(Name, skip_header=9, delimiter=' ')
+        else:
+            Dim = Name[i].find('3D')
+            if Dim == 1:
+                ANodesD_2D = np.genfromtxt(Name, skip_footer=734, skip_header=1, delimiter=' ')
+                AElemsD_2D = np.genfromtxt(Name, skip_header=405, delimiter=' ')
+            else:
+                ANodesD_3D = np.genfromtxt(Name, skip_footer=734, skip_header=1, delimiter=' ')
+                AElemsD_3D = np.genfromtxt(Name, skip_header=405, delimiter=' ')
+
+    return BNodesR_2D, BElemsR_2D, BNodesR_3D, BElemsR_3D, ANodesR_2D, AElemsR_2D, ANodesR_3D, AElemsR_3D, BNodesD_2D, BElemsD_2D, BNodesD_3D, BElemsD_3D, ANodesD_2D, AElemsD_2D, ANodesD_3D, AElemsD_3D
+
+
+x = reading(fName)
+"""
+
 # References
 # Basic 2D
 B2NodesR = np.genfromtxt('Basic2D_Reference.ucd', skip_footer=7, skip_header=1, delimiter=' ')
