@@ -2,7 +2,7 @@
 """
 Created on Tue Oct 25 14:07:18 2022
 
-@author: Juan Orduna 
+@author: Juan Orduña
 """
 
 # Test 2 - Computational Take Home, Part 1
