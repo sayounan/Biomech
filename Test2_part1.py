@@ -53,7 +53,8 @@ def reading(Name):
                 ANodesD_3D = np.genfromtxt(Name, skip_footer=734, skip_header=1, delimiter=' ')
                 AElemsD_3D = np.genfromtxt(Name, skip_header=405, delimiter=' ')
 
-    return BNodesR_2D, BElemsR_2D, BNodesR_3D, BElemsR_3D, ANodesR_2D, AElemsR_2D, ANodesR_3D, AElemsR_3D, BNodesD_2D, BElemsD_2D, BNodesD_3D, BElemsD_3D, ANodesD_2D, AElemsD_2D, ANodesD_3D, AElemsD_3D
+    return BNodesR_2D, BElemsR_2D, BNodesR_3D, BElemsR_3D, ANodesR_2D, AElemsR_2D, ANodesR_3D, AElemsR_3D, 
+    BNodesD_2D, BElemsD_2D, BNodesD_3D, BElemsD_3D, ANodesD_2D, AElemsD_2D, ANodesD_3D, AElemsD_3D 
 
 
 x = reading(fName)
@@ -94,5 +95,3 @@ A2ElemsD = np.genfromtxt('Adv2D_Deformed.ucd', skip_header=405, delimiter=' ')
 # Advanced 3D
 A3NodesD = np.genfromtxt('Adv3D_Deformed.ucd', skip_footer=734, skip_header=1, delimiter=' ')
 A3ElemsD = np.genfromtxt('Adv3D_Deformed.ucd', skip_header=405, delimiter=' ')
-
-
