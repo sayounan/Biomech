@@ -62,10 +62,12 @@ def reading(Name):
 x = reading(fName)
 """
 
+locPath = r"/Users/sayounan/Documents/University/2022 2-Fall/Biomechanics Intro (BIOE 3020)/Coding Assignment1"
 
-def read():
+
+def read(local_path):
     import os
-    folderpath = r"/Users/sayounan/Documents/University/2022 2-Fall/Biomechanics Intro (BIOE 3020)/Coding Assignment1"
+    folderpath = local_path
     filepaths = [os.path.join(folderpath, name) for name in os.listdir(folderpath)]
     filenames = os.listdir(folderpath)
 
@@ -89,7 +91,7 @@ def read():
         print(list(d.values())[j], f'\n')
 
 
-read()
+read(locPath)
 
 """
 # References
