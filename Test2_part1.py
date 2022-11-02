@@ -11,6 +11,8 @@ import numpy as np
 
 # Reading in Files
 
+# The comment block below is to be removed, left there temporarily for reference.
+
 """
 fName = ['Basic2D_Reference.ucd', 'Basic3D_Reference.ucd', 'Basic2D_Deformed.ucd', 'Basic3D_Deformed.ucd',
          'Adv2D_Reference.ucd', 'Adv3D_Reference.ucd', 'Adv2D_Deformed.ucd', 'Adv3D_Deformed.ucd']
@@ -60,6 +62,36 @@ def reading(Name):
 x = reading(fName)
 """
 
+
+def read():
+    import os
+    folderpath = r"/Users/sayounan/Documents/University/2022 2-Fall/Biomechanics Intro (BIOE 3020)/Coding Assignment1"
+    filepaths = [os.path.join(folderpath, name) for name in os.listdir(folderpath)]
+    filenames = os.listdir(folderpath)
+
+    d = {}
+    for path in filepaths:
+        for i in range(len(filenames)):
+            if ".ucd" in filenames[i]:
+                if "Basic" in filenames[i]:
+                    d[f'{filenames[i]} Nodes'] = np.genfromtxt(filenames[i], skip_footer=7, skip_header=1,
+                                                               delimiter=' ')
+                    d[f'{filenames[i]} Elems'] = np.genfromtxt(filenames[i], skip_header=9, delimiter=' ')
+                elif "Adv" in filenames[i]:
+                    d[f'{filenames[i]} Nodes'] = np.genfromtxt(filenames[i], skip_footer=734, skip_header=1,
+                                                               delimiter=' ')
+                    d[f'{filenames[i]} Elems'] = np.genfromtxt(filenames[i], skip_header=405, delimiter=' ')
+            else:
+                continue
+
+    for j in range(len(d)):
+        print(list(d.keys())[j], f'\n')
+        print(list(d.values())[j], f'\n')
+
+
+read()
+
+"""
 # References
 # Basic 2D
 B2NodesR = np.genfromtxt('Basic2D_Reference.ucd', skip_footer=7, skip_header=1, delimiter=' ')
@@ -95,3 +127,4 @@ A2ElemsD = np.genfromtxt('Adv2D_Deformed.ucd', skip_header=405, delimiter=' ')
 # Advanced 3D
 A3NodesD = np.genfromtxt('Adv3D_Deformed.ucd', skip_footer=734, skip_header=1, delimiter=' ')
 A3ElemsD = np.genfromtxt('Adv3D_Deformed.ucd', skip_header=405, delimiter=' ')
+"""
