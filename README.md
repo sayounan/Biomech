@@ -7,7 +7,8 @@ First function follows a local path to ucd files location. Then creates a dictio
 reads the names of individual files in the folder and checks for the substring ".ucd" in the file name. If found,
 it checks for the substrings "Basic" & "Adv" in the file names. When it finds that, it follows the respective 
 numpy.genfromtxt method specific to the file. It assigns it to a variable name according to the file name followed by 
-what the matrix represents. Those variables are simultaneously appended to the predefined dictionary. Then, the print
-statements are a rudimentary functionality check and also a reference on how to index a dictionary. Finally, the 
+what the matrix represents. Those variables are simultaneously appended to the predefined dictionary. Finally, the 
 dictionary is returned to be used later. 
+
+The following print statements are reference points for dictionary indexing methods.
 

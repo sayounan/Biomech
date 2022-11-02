@@ -32,12 +32,11 @@ def read(local_path):  # This is for reading data
                     d[f'{filenames[i]} Elems'] = np.genfromtxt(filenames[i], skip_header=405, delimiter=' ')
             else:
                 continue
-
-    for j in range(len(d)):
-        print(list(d.keys())[j], f'\n')
-        print(list(d.values())[j], f'\n')
-
     return d
 
 
 dataIn = read(locPath)
+
+print(f'Second variable/matrix in dictionary: \n{list(dataIn.values())[1]}\n')
+print(f'Second line in second matrix in dictionary: {list(dataIn.values())[1][1]}\n')
+print(f'Fifth value in second line in second matrix in dictionary: {list(dataIn.values())[1][1][4]}\n')
