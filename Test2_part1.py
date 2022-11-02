@@ -62,6 +62,7 @@ def reading(Name):
 x = reading(fName)
 """
 
+# Change this line for your computer
 locPath = r"/Users/sayounan/Documents/University/2022 2-Fall/Biomechanics Intro (BIOE 3020)/Coding Assignment1"
 
 
