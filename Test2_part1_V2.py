@@ -24,44 +24,15 @@ def read(local_path):  # This is for reading data
             if ".ucd" in filenames[i]:
                 if "Basic" in filenames[i]:
                     d[f'{filenames[i]} Nodes'] = np.genfromtxt(filenames[i], skip_footer=7, skip_header=1,
-                                                               delimiter=' ')
-                    d[f'{filenames[i]} Elems'] = np.genfromtxt(filenames[i], skip_header=9, delimiter=' ')
+                                                               delimiter=' ', usecols=(1,2,3))
+                    d[f'{filenames[i]} Elems'] = np.genfromtxt(filenames[i], skip_header=9, delimiter=' ', usecols=(3,4,5))
                 elif "Adv" in filenames[i]:
                     d[f'{filenames[i]} Nodes'] = np.genfromtxt(filenames[i], skip_footer=734, skip_header=1,
-                                                               delimiter=' ')
-                    d[f'{filenames[i]} Elems'] = np.genfromtxt(filenames[i], skip_header=405, delimiter=' ')
+                                                               delimiter=' ', usecols=(1,2,3))
+                    d[f'{filenames[i]} Elems'] = np.genfromtxt(filenames[i], skip_header=405, delimiter=' ', usecols=(3,4,5))
             else:
                 continue
     return d
 
 
-dataIn = read(locPath)
-
-"""
-print(f'Second variable/matrix in dictionary: \n{list(dataIn.values())[1]}\n')
-print(f'Second line in second matrix in dictionary: {list(dataIn.values())[1][1]}\n')
-print(f'Fifth value in second line in second matrix in dictionary: {list(dataIn.values())[1][1][4]}\n')
-
-print(f'Basic 2D Reference (Nodes): \n{list(dataIn.values())[11]}\n')
-
-
-To "index" the dictionary use list(dataIn.values())[#], also the order of
-indexing goes [item in dictionary][row][column]
-"""
-
-#Loop to get all the nodes from all node files 
-AllNodes = []
-AllElems = []
-    
-for i in range(0, len(dataIn.values()), 2):
-    for j in range(len(list(dataIn.values())[i])):
-        AllNodes.append(list(dataIn.values())[i][j][1:4])
-    
-#Loop to get all the elements from all the element file
-for i in range(1, len(dataIn.values()), 2):
-    for j in range(len(list(dataIn.values())[i])):
-        AllElems.append(list(dataIn.values())[i][j][3:6])
-    
-    
-    
-    
+dataIn = read(locPath) 
