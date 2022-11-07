@@ -53,8 +53,11 @@ indexing goes [item in dictionary][row][column]
 Nodes11 = []
 for i in range(len(list(dataIn.values())[11])):
     Nodes11.append(list(dataIn.values())[11][i][3:6])
-    
-print(Nodes11)
+
+
+for i in range(len(dataIn.values())):
+    for j in range(len(list(dataIn.values())[i])):
+        Nodes11.append(list(dataIn.values())[i][j][3:6])
     
     
     
