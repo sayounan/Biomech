@@ -9,13 +9,13 @@ Created on Tue Oct 25 14:07:18 2022
 locPath = r"/Users/sayounan/Documents/University/2022 2-Fall/Biomechanics Intro (BIOE 3020)/Coding Assignment1"
 
 
-def read(local_path):  # This is for reading data
+def read(path):  # This is for reading data
 
     import os
     import numpy as np
 
-    filenames = os.listdir(local_path)
-    filepaths = [os.path.join(local_path, name) for name in filenames]
+    filenames = os.listdir(path)
+    filepaths = [os.path.join(path, name) for name in filenames]
 
     d = {}
     for path in filepaths:
