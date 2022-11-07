@@ -6,7 +6,7 @@ Created on Tue Oct 25 14:07:18 2022
 """
 
 # Change this line for your computer
-locPath = r"/Users/sayounan/Documents/University/2022 2-Fall/Biomechanics Intro (BIOE 3020)/Coding Assignment1"
+locPath = r"/Users/jessicagreen/Documents/Biomech"
 
 
 def read(path):  # This is for reading data
@@ -40,4 +40,4 @@ dataIn = read(locPath)
 
 print(f'Second variable/matrix in dictionary: \n{list(dataIn.values())[1]}\n')
 print(f'Second line in second matrix in dictionary: {list(dataIn.values())[1][1]}\n')
-print(f'Fifth value in second line in second matrix in dictionary: {list(dataIn.values())[1][1][4]}\n')
+print(f'Fifth value in second line in second matrix in dictionary: {list(dataIn.values())[1][1][2]}\n')
