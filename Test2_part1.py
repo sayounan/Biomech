@@ -14,9 +14,8 @@ def read(local_path):  # This is for reading data
     import os
     import numpy as np
 
-    folderpath = local_path
-    filenames = os.listdir(folderpath)
-    filepaths = [os.path.join(folderpath, name) for name in filenames]
+    filenames = os.listdir(local_path)
+    filepaths = [os.path.join(local_path, name) for name in filenames]
 
     d = {}
     for path in filepaths:
@@ -24,12 +23,14 @@ def read(local_path):  # This is for reading data
             if ".ucd" in filenames[i]:
                 if "Basic" in filenames[i]:
                     d[f'{filenames[i]} Nodes'] = np.genfromtxt(filenames[i], skip_footer=7, skip_header=1,
-                                                               delimiter=' ')
-                    d[f'{filenames[i]} Elems'] = np.genfromtxt(filenames[i], skip_header=9, delimiter=' ')
+                                                               delimiter=' ', usecols=(1, 2, 3))
+                    d[f'{filenames[i]} Elems'] = np.genfromtxt(filenames[i], skip_header=9, delimiter=' ',
+                                                               usecols=(3, 4, 5))
                 elif "Adv" in filenames[i]:
                     d[f'{filenames[i]} Nodes'] = np.genfromtxt(filenames[i], skip_footer=734, skip_header=1,
-                                                               delimiter=' ')
-                    d[f'{filenames[i]} Elems'] = np.genfromtxt(filenames[i], skip_header=405, delimiter=' ')
+                                                               delimiter=' ', usecols=(1, 2, 3))
+                    d[f'{filenames[i]} Elems'] = np.genfromtxt(filenames[i], skip_header=405, delimiter=' ',
+                                                               usecols=(3, 4, 5))
             else:
                 continue
     return d
