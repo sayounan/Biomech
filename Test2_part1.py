@@ -40,4 +40,4 @@ dataIn = read(locPath)
 
 print(f'Second variable/matrix in dictionary: \n{list(dataIn.values())[1]}\n')
 print(f'Second line in second matrix in dictionary: {list(dataIn.values())[1][1]}\n')
-print(f'Fifth value in second line in second matrix in dictionary: {list(dataIn.values())[1][1][2]}\n')
+print(f'Third value in second line in second matrix in dictionary: {list(dataIn.values())[1][1][2]}\n')
