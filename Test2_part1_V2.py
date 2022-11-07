@@ -49,18 +49,18 @@ To "index" the dictionary use list(dataIn.values())[#], also the order of
 indexing goes [item in dictionary][row][column]
 """
 
-#Testing Loop to get the nodes only 
-Nodes11 = []
-for i in range(len(list(dataIn.values())[11])):
-    Nodes11.append(list(dataIn.values())[11][i][3:6])
-
-
-for i in range(len(dataIn.values())):
+#Loop to get the element values from all the element files
+AllNodes = []
+AllElems = []
+    
+for i in range(0, len(dataIn.values()), 2):
     for j in range(len(list(dataIn.values())[i])):
-        Nodes11.append(list(dataIn.values())[i][j][3:6])
+        AllNodes.append(list(dataIn.values())[i][j][3:6])
     
-    
-    
+#Loop to get the node values from all the node files
+for i in range(1, len(dataIn.values()), 2):
+    for j in range(len(list(dataIn.values())[i])):
+        AllElems.append(list(dataIn.values())[i][j][1:3])
     
     
     
