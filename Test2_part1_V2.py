@@ -60,7 +60,7 @@ for i in range(0, len(dataIn.values()), 2):
 #Loop to get the node values from all the node files
 for i in range(1, len(dataIn.values()), 2):
     for j in range(len(list(dataIn.values())[i])):
-        AllElems.append(list(dataIn.values())[i][j][1:3])
+        AllElems.append(list(dataIn.values())[i][j][1:4])
     
     
     
