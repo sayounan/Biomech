@@ -6,7 +6,7 @@ Created on Tue Oct 25 14:07:18 2022
 """
 
 # Change this line for your computer
-locPath = r"/Users/jessicagreen/Documents/Biomech"
+locPath = r"/Users/sayounan/Documents/University/2022 2-Fall/Biomechanics Intro (BIOE 3020)/Coding Assignment1"
 
 
 def read(path):  # This is for reading data
@@ -38,6 +38,18 @@ def read(path):  # This is for reading data
 
 dataIn = read(locPath)
 
-print(f'Second variable/matrix in dictionary: \n{list(dataIn.values())[1]}\n')
-print(f'Second line in second matrix in dictionary: {list(dataIn.values())[1][1]}\n')
-print(f'Third value in second line in second matrix in dictionary: {list(dataIn.values())[1][1][2]}\n')
+print(f'First variable/matrix in dictionary: \n{list(dataIn.keys())[0]}\n{list(dataIn.values())[0]}\n')
+print(f'Second line in second matrix in dictionary: {list(dataIn.values())[0][3]}\n')
+print(f'Second value in second line in second matrix in dictionary: {list(dataIn.values())[0][3][1]}\n')
+
+
+"""
+def Strain(Mesh, Path):
+    
+    dict = {}
+
+    for i in range(len(Mesh)):
+        if "Nodes" in list(Mesh.keys())[i]:
+            for j in range(len(Mesh.values())[i][j]):
+                y23 = list(Mesh.values())[i][j]
+"""
