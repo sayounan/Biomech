@@ -44,8 +44,22 @@ print(f'Second value in second line in second matrix in dictionary: {list(dataIn
 
 
 def Strain(Mesh):
-    nodes = []
 
+    Refy = []
+    Refx = []
+
+    for i in range(len(Mesh)):
+        if "Nodes" in list(Mesh.keys())[i]:
+            if "Reference" in list(Mesh.keys())[i]:
+                for j in range(len(list(Mesh.values())[i])):
+                    y = list(Mesh.values())[i][j][1]
+                    x = list(Mesh.values())[i][j][0]
+                    Refx.append(x)
+                    Refy.append(y)
+    print(Refy)
+    print(Refx)
+
+"""
     for i in range(len(Mesh)):
         if "Nodes" in list(Mesh.keys())[i]:
             if "Reference" in list(Mesh.keys())[i]:
@@ -55,15 +69,17 @@ def Strain(Mesh):
                 x32 = list(Mesh.values())[i][2][0] - list(Mesh.values())[i][1][0]
                 x13 = list(Mesh.values())[i][0][0] - list(Mesh.values())[i][2][0]
                 x21 = list(Mesh.values())[i][1][0] - list(Mesh.values())[i][0][0]
-                nodes.append(list(Mesh.keys())[i])
-                nodes.append(y23)
-                nodes.append(y31)
-                nodes.append(y21)
-                nodes.append(x32)
-                nodes.append(x13)
-                nodes.append(x21)
+                # refnodes.append(list(Mesh.keys())[i])
+                # refnodes.append(y23)
+                # refnodes.append(y31)
+                # refnodes.append(y21)
+                # refnodes.append(x32)
+                # refnodes.append(x13)
+                # refnodes.append(x21)
+                return y23, y31, y21, x32, x13, x21
 
-    print(nodes)
+            elif "Def" in list(Mesh.keys())[i]:
+"""
 
 
 Strain(dataIn)
