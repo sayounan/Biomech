@@ -41,3 +41,23 @@ dataIn = read(locPath)
 print(f'First variable/matrix in dictionary: \n{list(dataIn.keys())[2]}\n{list(dataIn.values())[2]}\n')
 print(f'Second line in second matrix in dictionary: {list(dataIn.values())[2][3]}\n')
 print(f'Second value in second line in second matrix in dictionary: {list(dataIn.values())[2][3][1]}\n')
+
+
+def Node(Mesh):
+    for i in range(len(list(Mesh.keys()))):
+        if "Elems" in list(Mesh.keys())[i]:
+            for j in range(len(list(Mesh.keys()))):
+                if "Nodes" in list(Mesh.keys())[j]:
+                    EN = list(Mesh.keys())[i].split(".")
+                    NN = list(Mesh.keys())[j].split(".")
+                    if EN[0] == NN[0]:
+                        print(EN, NN, i, j)
+                    else:
+                        continue
+                else:
+                    continue
+        else:
+            continue
+
+
+Node(dataIn)
