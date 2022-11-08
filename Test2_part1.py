@@ -44,26 +44,26 @@ print(f'Second value in second line in second matrix in dictionary: {list(dataIn
 
 
 def Strain(Mesh):
-
     nodes = []
 
     for i in range(len(Mesh)):
         if "Nodes" in list(Mesh.keys())[i]:
-
-            y23 = list(Mesh.values())[i][1][1] - list(Mesh.values())[i][2][1]
-            y31 = list(Mesh.values())[i][2][1] - list(Mesh.values())[i][0][1]
-            y21 = list(Mesh.values())[i][1][1] - list(Mesh.values())[i][0][1]
-            x32 = list(Mesh.values())[i][2][0] - list(Mesh.values())[i][1][0]
-            x13 = list(Mesh.values())[i][0][0] - list(Mesh.values())[i][2][0]
-            x21 = list(Mesh.values())[i][1][0] - list(Mesh.values())[i][0][0]
-            nodes.append(list(Mesh.keys())[i])
-            nodes.append(y23)
-            nodes.append(y31)
-            nodes.append(y21)
-            nodes.append(x32)
-            nodes.append(x13)
-            nodes.append(x21)
+            if "Reference" in list(Mesh.keys())[i]:
+                y23 = list(Mesh.values())[i][1][1] - list(Mesh.values())[i][2][1]
+                y31 = list(Mesh.values())[i][2][1] - list(Mesh.values())[i][0][1]
+                y21 = list(Mesh.values())[i][1][1] - list(Mesh.values())[i][0][1]
+                x32 = list(Mesh.values())[i][2][0] - list(Mesh.values())[i][1][0]
+                x13 = list(Mesh.values())[i][0][0] - list(Mesh.values())[i][2][0]
+                x21 = list(Mesh.values())[i][1][0] - list(Mesh.values())[i][0][0]
+                nodes.append(list(Mesh.keys())[i])
+                nodes.append(y23)
+                nodes.append(y31)
+                nodes.append(y21)
+                nodes.append(x32)
+                nodes.append(x13)
+                nodes.append(x21)
 
     print(nodes)
+
 
 Strain(dataIn)
