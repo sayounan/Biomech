@@ -38,18 +38,32 @@ def read(path):  # This is for reading data
 
 dataIn = read(locPath)
 
-print(f'First variable/matrix in dictionary: \n{list(dataIn.keys())[0]}\n{list(dataIn.values())[0]}\n')
-print(f'Second line in second matrix in dictionary: {list(dataIn.values())[0][3]}\n')
-print(f'Second value in second line in second matrix in dictionary: {list(dataIn.values())[0][3][1]}\n')
+print(f'First variable/matrix in dictionary: \n{list(dataIn.keys())[2]}\n{list(dataIn.values())[2]}\n')
+print(f'Second line in second matrix in dictionary: {list(dataIn.values())[2][3]}\n')
+print(f'Second value in second line in second matrix in dictionary: {list(dataIn.values())[2][3][1]}\n')
 
 
-"""
-def Strain(Mesh, Path):
-    
-    dict = {}
+def Strain(Mesh):
+
+    nodes = []
 
     for i in range(len(Mesh)):
         if "Nodes" in list(Mesh.keys())[i]:
-            for j in range(len(Mesh.values())[i][j]):
-                y23 = list(Mesh.values())[i][j]
-"""
+
+            y23 = list(Mesh.values())[i][1][1] - list(Mesh.values())[i][2][1]
+            y31 = list(Mesh.values())[i][2][1] - list(Mesh.values())[i][0][1]
+            y21 = list(Mesh.values())[i][1][1] - list(Mesh.values())[i][0][1]
+            x32 = list(Mesh.values())[i][2][0] - list(Mesh.values())[i][1][0]
+            x13 = list(Mesh.values())[i][0][0] - list(Mesh.values())[i][2][0]
+            x21 = list(Mesh.values())[i][1][0] - list(Mesh.values())[i][0][0]
+            nodes.append(list(Mesh.keys())[i])
+            nodes.append(y23)
+            nodes.append(y31)
+            nodes.append(y21)
+            nodes.append(x32)
+            nodes.append(x13)
+            nodes.append(x21)
+
+    print(nodes)
+
+Strain(dataIn)
