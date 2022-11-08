@@ -56,12 +56,14 @@ def Node(Mesh):
                         NV = list(Mesh.values())[j]
                         for k in range(len(EV)):
                             for l in range(len(EV[k])):
-                                ind = EV[k][l]
+                                ind = int(EV[k][l])
                                 ind -= 1
-                                x = NV[ind, 0] # errors start here
-                                y = NV[ind, 1]
-                                z = NV[ind, 2]
-                        print(EN, NN, EV, NV, x, y, z)
+                                x = NV[ind][0]  # errors start here
+                                y = NV[ind][1]
+                                z = NV[ind][2]
+                        print(EN, NN, "\n")
+                        print(EV, NV, "\n")
+                        print(ind, "\n")
                     else:
                         continue
                 else:
