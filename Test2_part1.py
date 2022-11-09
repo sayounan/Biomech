@@ -45,6 +45,11 @@ print(f'Second value in second line in second matrix in dictionary: {list(dataIn
 
 def Node(Mesh):
 
+    import numpy as np
+
+    refMat = []
+    defMat = []
+
     for i in range(len(list(Mesh.keys()))):
         if "Elems" in list(Mesh.keys())[i]:
             for j in range(len(list(Mesh.keys()))):
@@ -58,18 +63,22 @@ def Node(Mesh):
                             for l in range(len(EV[k])):
                                 ind = int(EV[k][l])
                                 ind -= 1
-                                x = NV[ind][0]  # errors start here
+                                x = NV[ind][0]
                                 y = NV[ind][1]
                                 z = NV[ind][2]
-                        print(EN, NN, "\n")
-                        print(EV, NV, "\n")
-                        print(ind, "\n")
+                                if "Ref" in EN[0]:
+                                    refMat.append([x, y, z])
+                                elif "Def" in EN[0]:
+                                    defMat.append([x, y, z])
+                            # print(EN, NN, "\n")
+                            # print(EV, NV, "\n")
                     else:
                         continue
                 else:
                     continue
         else:
             continue
-
+    print(np.shape(refMat), "\n")
+    print(np.shape(defMat), "\n")
 
 Node(dataIn)
