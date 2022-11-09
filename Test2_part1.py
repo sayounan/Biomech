@@ -42,13 +42,19 @@ print(f'First variable/matrix in dictionary: \n{list(dataIn.keys())[2]}\n{list(d
 print(f'Second line in second matrix in dictionary: {list(dataIn.values())[2][3]}\n')
 print(f'Second value in second line in second matrix in dictionary: {list(dataIn.values())[2][3][1]}\n')
 
+"""
+def math(refMat, defMat):
+    
+    import numpy as np
+
+"""
 
 def Node(Mesh):
 
     import numpy as np
 
-    refMat = []
-    defMat = []
+    refMat = {}
+    defMat = {}
 
     for i in range(len(list(Mesh.keys()))):
         if "Elems" in list(Mesh.keys())[i]:
@@ -66,10 +72,10 @@ def Node(Mesh):
                                 x = NV[ind][0]
                                 y = NV[ind][1]
                                 z = NV[ind][2]
-                                if "Ref" in EN[0]:
-                                    refMat.append([x, y, z])
-                                elif "Def" in EN[0]:
-                                    defMat.append([x, y, z])
+                               # if "Ref" in EN[0]:
+                                   # refMat[f'{E[0]}']
+                               # elif "Def" in EN[0]:
+                                   # defMat.append([x, y, z])
                             # print(EN, NN, "\n")
                             # print(EV, NV, "\n")
                     else:
@@ -78,7 +84,6 @@ def Node(Mesh):
                     continue
         else:
             continue
-    print(np.shape(refMat), "\n")
-    print(np.shape(defMat), "\n")
+    print(refMat)
 
 Node(dataIn)
