@@ -94,21 +94,22 @@ def Node(Mesh):
     cd = 0
 
     for m in range(len(Mesh.keys())):
+        EN = list(Mesh.keys())[m].split(".")
         if "Elems" in list(Mesh.keys())[m]:
             if "Ref" in list(Mesh.keys())[m]:
                 if "Bas" in list(Mesh.keys())[m]:
                     for n in range(7):
-                        d[f'{list(Mesh.keys())[m]} Elem {n}'] = re[n]
+                        d[f'{EN[0]} Elem {n}'] = re[n]
                 elif "Adv" in list(Mesh.keys())[m]:
                     for o in range(404):
-                        d[f'{list(Mesh.keys())[m]} Elem {o}'] = re[o]
+                        d[f'{EN[0]} Elem {o}'] = re[o]
             elif "Def" in list(Mesh.keys())[m]:
                 if "Bas" in list(Mesh.keys())[m]:
                     for p in range(7):
-                        d[f'{list(Mesh.keys())[m]} Elem {p}'] = de[p]
+                        d[f'{EN[0]} Elem {p}'] = de[p]
                 elif "Adv" in list(Mesh.keys())[m]:
                     for q in range(404):
-                        d[f'{list(Mesh.keys())[m]} Elem {q}'] = de[q]
+                        d[f'{EN[0]} Elem {q}'] = de[q]
         else:
             continue
 
