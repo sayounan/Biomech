@@ -49,12 +49,12 @@ def math(refMat, defMat):
 
 """
 
-def Node(Mesh):
 
+def Node(Mesh):
     import numpy as np
 
-    refMat = {}
-    defMat = {}
+    refMat = []
+    defMat = []
 
     for i in range(len(list(Mesh.keys()))):
         if "Elems" in list(Mesh.keys())[i]:
@@ -72,18 +72,38 @@ def Node(Mesh):
                                 x = NV[ind][0]
                                 y = NV[ind][1]
                                 z = NV[ind][2]
-                               # if "Ref" in EN[0]:
-                                   # refMat[f'{E[0]}']
-                               # elif "Def" in EN[0]:
-                                   # defMat.append([x, y, z])
-                            # print(EN, NN, "\n")
-                            # print(EV, NV, "\n")
+                            if "Ref" in EN[0]:
+                                refMat.append([x, y, z])
+                            elif "Def" in EN[0]:
+                                defMat.append([x, y, z])
                     else:
                         continue
                 else:
                     continue
         else:
             continue
-    print(refMat)
 
-Node(dataIn)
+    Reference = np.array(refMat)
+    Deformation = np.array(defMat)
+
+    re = np.split(Reference, 494)
+    de = np.split(Deformation, 494)
+
+    d = {}
+    cr = 0
+    cd = 0
+
+    for m in range(len(Mesh.keys())):
+        if "Ref" in list(Mesh.keys())[m]:
+            for n in range(len(re)):
+                d[f'{list(Mesh.keys())[m]} elem {[n]}'] = re[n]
+        elif "Def" in list(Mesh.keys())[m]:
+            for o in range(len(de)):
+                d[f'{list(Mesh.keys())[m]} elem {[o]}'] = de[n]
+
+
+    return re, de, d
+
+outData = Node(dataIn)
+
+print('f')
