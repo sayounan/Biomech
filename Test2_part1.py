@@ -99,10 +99,10 @@ def Node(Mesh):
                 d[f'{list(Mesh.keys())[m]} elem {[n]}'] = re[n]
         elif "Def" in list(Mesh.keys())[m]:
             for o in range(len(de)):
-                d[f'{list(Mesh.keys())[m]} elem {[o]}'] = de[n]
-
+                d[f'{list(Mesh.keys())[m]} elem {[o]}'] = de[o]
 
     return re, de, d
+
 
 outData = Node(dataIn)
 
