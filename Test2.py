@@ -6,7 +6,7 @@ Created on Tue Oct 25 14:07:18 2022
 """
 
 # Change this line for your computer
-locPath = r"/Users/sayounan/Documents/University/2022 2-Fall/Biomechanics Intro (BIOE 3020)/Coding Assignment1"
+locPath = r"/Users/sayounan/Documents/University/2022 2-Fall/Biomechanics Intro (BIOE 3020)/Coding Assignment"
 
 
 def read(path):  # Part 1
@@ -17,7 +17,7 @@ def read(path):  # Part 1
     filepaths = [os.path.join(path, name) for name in filenames]
 
     d = {}
-    for path in filepaths:
+    for _ in filepaths:
         for i in range(len(filenames)):
             if ".ucd" in filenames[i]:
                 if "Basic" in filenames[i]:
@@ -39,7 +39,6 @@ dataIn = read(locPath)
 
 
 def Node(Mesh):  # Part 2-1
-    import numpy as np
 
     refMat = {}
     defMat = {}
@@ -83,22 +82,19 @@ def Node(Mesh):  # Part 2-1
 outData = Node(dataIn)
 
 
-outData = Node(dataIn)
-
-
 def Strain_Math(Reference, Deformed):  # Part 2-2 & 3
-    
+
     import numpy as np
 
     strai = {}
-   # if '2D' in list(Reference.keys()):  # Part 2-2
+    # if '2D' in list(Reference.keys()):  # Part 2-2
     for i in range(0, len(Reference), 3):
         x1ref = list(Reference.values())[i][0]
         y1ref = list(Reference.values())[i][1]
-    
+
         x2ref = list(Reference.values())[i+1][0]
         y2ref = list(Reference.values())[i+1][1]
-    
+
         x3ref = list(Reference.values())[i+2][0]
         y3ref = list(Reference.values())[i+2][1]
 
@@ -190,5 +186,5 @@ strain = Strain_Math(outData[0], outData[1])
             
 """
 
-for i in range(len(strain)):
-    print(f'strain =', list(strain.keys())[i], '\n', list(strain.values())[i], '\n')
+for va in range(len(strain)):
+    print(list(strain.keys())[va], f'strain:',  '\n', list(strain.values())[va], '\n')
