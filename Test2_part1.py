@@ -106,7 +106,7 @@ outData = Node(dataIn)
 
 def Strain_Math(dictionary):
     
-    import
+    import numpy as np
 
 strain = Strain_Math(outData)
 
