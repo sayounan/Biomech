@@ -9,7 +9,7 @@ Created on Tue Oct 25 14:07:18 2022
 locPath = r"/Users/sayounan/Documents/University/2022 2-Fall/Biomechanics Intro (BIOE 3020)/Coding Assignment1"
 
 
-def read(path):  # This is for reading data
+def read(path):
 
     import os
     import numpy as np
