@@ -10,7 +10,6 @@ locPath = r"/Users/sayounan/Documents/University/2022 2-Fall/Biomechanics Intro 
 
 
 def read(path):
-
     import os
     import numpy as np
 
@@ -37,17 +36,6 @@ def read(path):
 
 
 dataIn = read(locPath)
-
-print(f'First variable/matrix in dictionary: \n{list(dataIn.keys())[2]}\n{list(dataIn.values())[2]}\n')
-print(f'Second line in second matrix in dictionary: {list(dataIn.values())[2][3]}\n')
-print(f'Second value in second line in second matrix in dictionary: {list(dataIn.values())[2][3][1]}\n')
-
-"""
-def math(refMat, defMat):
-    
-    import numpy as np
-
-"""
 
 
 def Node(Mesh):
