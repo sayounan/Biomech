@@ -6,7 +6,7 @@ Created on Tue Oct 25 14:07:18 2022
 """
 
 # Change this line for your computer
-locPath = r"/Users/sayounan/Documents/University/2022 2-Fall/Biomechanics Intro (BIOE 3020)/Coding Assignment1"
+locPath = r"C:\Users\hepbo\OneDrive\Documents\New UCA Fall 2022\Python Fall 2022\Test 2 part 1"
 
 
 def read(path):
@@ -104,14 +104,23 @@ def Node(Mesh):
 
 outData = Node(dataIn)
 
-"""
 def Strain_Math(dictionary):
     
     import numpy as np
-
+    for i in range(len(outData)):
+        x1 = [i][0][0]
+        y1 = [i][0][1]
+        z1 = [i][0][2]
+    
+        x2 = [i][1][0]
+        y2 = [i][1][1]
+        z2 = [i][1][2]
+    
+        x3 = [i][2][0]
+        y3 = [i][2][1]
+        z3 = [i][2][2]
     
 
 strain = Strain_Math(outData)
-"""
 
 print('ertgh')
