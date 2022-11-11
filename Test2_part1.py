@@ -78,8 +78,6 @@ def Node(Mesh):
     de = np.split(Deformation, 494)
 
     d = {}
-    cr = 0
-    cd = 0
 
     for m in range(len(Mesh.keys())):
         EN = list(Mesh.keys())[m].split(".")
@@ -101,9 +99,16 @@ def Node(Mesh):
         else:
             continue
 
-    return re, de, d
+    return d
 
 
 outData = Node(dataIn)
 
-print('f')
+def Strain_Math(dictionary):
+    
+    import
+
+strain = Strain_Math(outData)
+
+
+print('ertgh')
