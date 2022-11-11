@@ -6,10 +6,10 @@ Created on Tue Oct 25 14:07:18 2022
 """
 
 # Change this line for your computer
-locPath = r"C:\Users\hepbo\OneDrive\Documents\New UCA Fall 2022\Python Fall 2022\Test 2 part 1"
+locPath = r"/Users/sayounan/Documents/University/2022 2-Fall/Biomechanics Intro (BIOE 3020)/Coding Assignment1"
 
 
-def read(path):
+def read(path):  # Part 1
     import os
     import numpy as np
 
@@ -38,11 +38,11 @@ def read(path):
 dataIn = read(locPath)
 
 
-def Node(Mesh):
+def Node(Mesh):  # Part 2-1
     import numpy as np
 
-    refMat = []
-    defMat = []
+    refMat = {}
+    defMat = {}
 
     for i in range(len(list(Mesh.keys()))):
         if "Elems" in list(Mesh.keys())[i]:
@@ -60,10 +60,16 @@ def Node(Mesh):
                                 x = NV[ind][0]
                                 y = NV[ind][1]
                                 z = NV[ind][2]
-                            if "Ref" in EN[0]:
-                                refMat.append([x, y, z])
-                            elif "Def" in EN[0]:
-                                defMat.append([x, y, z])
+                                if "Ref" in EN[0]:
+                                    if "Bas" in EN[0]:
+                                        refMat.update({f'{EN[0]} Elem {k} Node {l}': [x, y, z]})
+                                    elif "Adv" in EN[0]:
+                                        refMat.update({f'{EN[0]} Elem {k} Node {l}': [x, y, z]})
+                                elif "Def" in EN[0]:
+                                    if "Bas" in EN[0]:
+                                        defMat.update({f'{EN[0]} Elem {k} Node {l}': [x, y, z]})
+                                    elif "Adv" in EN[0]:
+                                        defMat.update({f'{EN[0]} Elem {k} Node {l}': [x, y, z]})
                     else:
                         continue
                 else:
@@ -71,56 +77,118 @@ def Node(Mesh):
         else:
             continue
 
-    Reference = np.array(refMat)
-    Deformation = np.array(defMat)
-
-    re = np.split(Reference, 494)
-    de = np.split(Deformation, 494)
-
-    d = {}
-
-    for m in range(len(Mesh.keys())):
-        EN = list(Mesh.keys())[m].split(".")
-        if "Elems" in list(Mesh.keys())[m]:
-            if "Ref" in list(Mesh.keys())[m]:
-                if "Bas" in list(Mesh.keys())[m]:
-                    for n in range(7):
-                        d[f'{EN[0]} Elem {n}'] = re[n]
-                elif "Adv" in list(Mesh.keys())[m]:
-                    for o in range(404):
-                        d[f'{EN[0]} Elem {o}'] = re[o]
-            elif "Def" in list(Mesh.keys())[m]:
-                if "Bas" in list(Mesh.keys())[m]:
-                    for p in range(7):
-                        d[f'{EN[0]} Elem {p}'] = de[p]
-                elif "Adv" in list(Mesh.keys())[m]:
-                    for q in range(404):
-                        d[f'{EN[0]} Elem {q}'] = de[q]
-        else:
-            continue
-
-    return d
+    return refMat, defMat
 
 
 outData = Node(dataIn)
 
-def Strain_Math(dictionary):
+
+outData = Node(dataIn)
+
+
+def Strain_Math(Reference, Deformed):  # Part 2-2 & 3
     
     import numpy as np
-    for i in range(len(outData)):
-        x1 = [i][0][0]
-        y1 = [i][0][1]
-        z1 = [i][0][2]
-    
-        x2 = [i][1][0]
-        y2 = [i][1][1]
-        z2 = [i][1][2]
-    
-        x3 = [i][2][0]
-        y3 = [i][2][1]
-        z3 = [i][2][2]
-    
 
-strain = Strain_Math(outData)
+    strai = {}
+   # if '2D' in list(Reference.keys()):  # Part 2-2
+    for i in range(0, len(Reference), 3):
+        x1ref = list(Reference.values())[i][0]
+        y1ref = list(Reference.values())[i][1]
+    
+        x2ref = list(Reference.values())[i+1][0]
+        y2ref = list(Reference.values())[i+1][1]
+    
+        x3ref = list(Reference.values())[i+2][0]
+        y3ref = list(Reference.values())[i+2][1]
 
-print('ertgh')
+        x1def = list(Deformed.values())[i][0]
+        y1def = list(Deformed.values())[i][1]
+
+        x2def = list(Deformed.values())[i+1][0]
+        y2def = list(Deformed.values())[i+1][1]
+
+        x3def = list(Deformed.values())[i+2][0]
+        y3def = list(Deformed.values())[i+2][1]
+
+        y23 = y2ref - y3ref
+        y31 = y3ref - y1ref
+        y12 = y1ref - y2ref
+
+        x32 = x3ref - x2ref
+        x13 = x1ref - x3ref
+        x21 = x2ref - x1ref
+
+        ux1 = x1def - x1ref
+        uy1 = y1def - y1ref
+
+        ux2 = x2def - x2ref
+        uy2 = y2def - y2ref
+
+        ux3 = x3def - x3ref
+        uy3 = y3def - y3ref
+
+        refMat = [[y23, 0.0, y31, 0.0, y12, 0.0], [0.0, x32, 0.0, x13, 0.0, x21], [x32, y23, x13, y31, x21, y12]]
+        UMat = [[ux1], [uy1], [ux2], [uy2], [ux3], [uy3]]
+
+        dotProd = np.dot(refMat, UMat)
+        A2 = (x2ref * y3ref - x3ref * y2ref) + (x3ref * y1ref - x1ref * y3ref) + (x1ref * y2ref - x2ref * y1ref)
+        stra = dotProd*1/A2
+
+        EVN = list(Reference.keys())[i].split(' ')
+        strai.update({f'{EVN[0]} {EVN[1]} {EVN[2]}': stra})
+
+    return strai
+
+strain = Strain_Math(outData[0], outData[1])
+
+"""
+    elif '3D' in list(Reference.keys()):  # Part 3
+        for j in range(0, len(Reference), 3):
+            x1ref = list(Reference.values())[j][0]
+            y1ref = list(Reference.values())[j][1]
+            z1ref = list(Reference.values())[j][2]
+
+            x2ref = list(Reference.values())[j + 1][0]
+            y2ref = list(Reference.values())[j + 1][1]
+            z2ref = list(Reference.values())[j + 1][2]
+
+            x3ref = list(Reference.values())[j + 2][0]
+            y3ref = list(Reference.values())[j + 2][1]
+            z3ref = list(Reference.values())[j + 2][2]
+
+            x1def = list(Deformed.values())[j][0]
+            y1def = list(Deformed.values())[j][1]
+            z1def = list(Deformed.values())[j][2]
+
+            x2def = list(Deformed.values())[j + 1][0]
+            y2def = list(Deformed.values())[j + 1][1]
+            z2def = list(Deformed.values())[j + 1][2]
+
+            x3def = list(Deformed.values())[j + 2][0]
+            y3def = list(Deformed.values())[j + 2][1]
+            z3def = list(Deformed.values())[j + 2][2]
+
+            y23 = y2ref - y3ref
+            y31 = y3ref - y1ref
+            y12 = y1ref - y2ref
+
+            x32 = x3ref - x2ref
+            x13 = x1ref - x3ref
+            x21 = x2ref - x1ref
+
+            ux1 = x1def - x1ref
+            uy1 = y1def - y1ref
+
+            ux2 = x2def - x2ref
+            uy2 = y2def - y2ref
+
+            ux3 = x3def - x3ref
+            uy3 = y3def - y3ref
+            
+            
+"""
+
+for i in range(len(strain)):
+    print(f'strain =', list(strain.keys())[i], '\n', list(strain.values())[i], '\n')
+
