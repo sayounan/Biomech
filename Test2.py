@@ -140,6 +140,7 @@ def Strain_Math(Reference, Deformed):  # Part 2-2 & 3
 
     return strai
 
+
 strain = Strain_Math(outData[0], outData[1])
 
 """
@@ -191,4 +192,3 @@ strain = Strain_Math(outData[0], outData[1])
 
 for i in range(len(strain)):
     print(f'strain =', list(strain.keys())[i], '\n', list(strain.values())[i], '\n')
-
