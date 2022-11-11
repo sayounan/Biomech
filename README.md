@@ -10,5 +10,8 @@ numpy.genfromtxt method specific to the file. It assigns it to a variable name a
 what the matrix represents. Those variables are simultaneously appended to the predefined dictionary. Finally, the 
 dictionary is returned to be used later. 
 
-The following print statements are reference points for dictionary indexing methods.
+The second function correlates the nodes with their respective elements based on the key names of the dictionary 
+entries.
+
+
 
