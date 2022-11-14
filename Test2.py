@@ -185,6 +185,8 @@ strain = Strain_Math(outData[0], outData[1])
             
             
 """
-
 for va in range(len(strain)):
-    print(list(strain.keys())[va], f'strain:',  '\n', list(strain.values())[va], '\n')
+    EL = list(strain.keys())[va].split(".")
+    E = EL[0].split("_")
+    ES = E[1].split(" ")
+    print(E[0], ES[1], 'number', ES[2], 'strain:', '\n', list(strain.values())[va], '\n')
