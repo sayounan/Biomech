@@ -65,7 +65,7 @@ def Node(Mesh):  # Part 2-1
                                     elif "Adv" in EN[0]:
                                         refMat.update({f'{EN[0]} Elem {k} Node {l}': [x, y, z]})
                                 elif "Def" in EN[0]:
-                                    if "Bas" in EN[0]:
+                                    if "Basic" in EN[0]:
                                         defMat.update({f'{EN[0]} Elem {k} Node {l}': [x, y, z]})
                                     elif "Adv" in EN[0]:
                                         defMat.update({f'{EN[0]} Elem {k} Node {l}': [x, y, z]})
