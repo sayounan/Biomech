@@ -6,7 +6,8 @@ Created on Tue Oct 25 14:07:18 2022
 """
 
 # Change this line for your computer
-locPath = r"/Users/sayounan/Documents/University/2022 2-Fall/Biomechanics Intro (BIOE 3020)/Coding Assignment"
+locPath = r"/Users/sayounan/Documents/University/Previous Semesters/2022 2-Fall/Biomechanics Intro (BIOE 3020)/" \
+          r"Coding Assignment"
 
 
 def read(path):  # Part 1
